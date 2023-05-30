@@ -1,11 +1,12 @@
 package com.ejemplo.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
 
-
+@Entity
+@Table
 public class Role {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	private String nombre;
 	private int estado;

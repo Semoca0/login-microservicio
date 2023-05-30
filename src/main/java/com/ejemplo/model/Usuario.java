@@ -1,16 +1,20 @@
 
 package com.ejemplo.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
 
+@Entity
+@Table
 
 public class Usuario {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 	private String usuario;
 	private String clave;
 	private int estado;
+	@ManyToOne
+	@JoinColumn(name = "persona_codigo")
 	private Persona persona;
 
 	public Integer getCodigo() {
