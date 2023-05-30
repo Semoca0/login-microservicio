@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@Data
+
 public class JasperData {
 
 	private String pathJrxml;
