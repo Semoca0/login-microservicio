@@ -9,7 +9,11 @@ public class UsuarioRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
+	@ManyToOne
+	@JoinColumn(name = "role_codigo")
 	private Role role;
+	@ManyToOne
+	@JoinColumn(name = "usuario_codigo")
 	private Usuario user;
 	private int estado;
 
