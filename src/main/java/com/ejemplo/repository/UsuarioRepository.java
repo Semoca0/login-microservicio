@@ -58,16 +58,16 @@ public class UsuarioRepository {
 		parameter.addValue("usuario", usuario);
 
 		String sql = "SELECT r.nombre FROM usuario u "
-				+ "INNER JOIN usuario_role ur ON u.codigo = ur.codigo "
+				+ "INNER JOIN usuario_role ur ON u.codigo = ur.usuario_codigo "
 				+ "INNER JOIN `role` r ON ur.role_codigo = r.codigo "
-				+ "WHERE u.usuario = ?";
+				+ "WHERE u.usuario = :usuario";
 
 		List<String> lstRoles = namedJdbcTemplate.query(sql, parameter, new RowMapper<String>() {
 
 			@Override
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-				return rs.getString("role_nombre");
+				return rs.getString("nombre");
 			}
 
 		});
