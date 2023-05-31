@@ -26,7 +26,7 @@ public class PersonaRepository {
 		parameter.addValue("estado", 1);
 		parameter.addValue("identificacion", persona.getIdentificacion());
 
-		String sql = "insert into persona (per_nombre,per_apellido,per_identificacion) "
+		String sql = "insert into persona (nombre,apellido,identificacion) "
 				+ "values(:nombre,:apellido,:identificacion)";
 
 		namedJdbcTemplate.update(sql, parameter);
