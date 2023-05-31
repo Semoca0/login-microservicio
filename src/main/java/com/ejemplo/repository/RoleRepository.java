@@ -49,7 +49,7 @@ public class RoleRepository {
 		parameter.addValue("nombre", role.getNombre());
 		parameter.addValue("estado", 1);
 
-		String sql = "insert into role(role_nombre,rol_estado)"
+		String sql = "insert into role(nombre,estado)"
 				+ "values(:nombre,:estado)";
 
 		namedJdbcTemplate.update(sql, parameter);

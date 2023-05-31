@@ -27,7 +27,7 @@ public class UsuarioRepository {
 		MapSqlParameterSource parameter = new MapSqlParameterSource();
 		parameter.addValue("usuario", usuario);
 
-		String sql = "select usu_usuario,usu_clave,usu_estado from usuario where usu_usuario=:usuario";
+		String sql = "select usuario,clave,estado from usuario where usuario=:usuario";
 
 		List<Usuario> lstUsuario = namedJdbcTemplate.query(sql, parameter, new RowMapper<Usuario>() {
 
@@ -35,9 +35,9 @@ public class UsuarioRepository {
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 				Usuario user = new Usuario();
-				user.setClave(rs.getString("usu_clave"));
-				user.setEstado(rs.getInt("usu_estado"));
-				user.setUsuario(rs.getString("usu_usuario"));
+				user.setClave(rs.getString("clave"));
+				user.setEstado(rs.getInt("estado"));
+				user.setUsuario(rs.getString("usuario"));
 				return user;
 			}
 
@@ -55,8 +55,8 @@ public class UsuarioRepository {
 		MapSqlParameterSource parameter = new MapSqlParameterSource();
 		parameter.addValue("usuario", usuario);
 
-		String sql = "select r.role_nombre from usuario u inner join usuario_role ur on u.usu_codigo  = ur.usu_codigo inner "
-				+ "join \"role\" r on ur.rol_codigo  = r.rol_codigo  where u.usu_usuario  =:usuario";
+		String sql = "select r.role_nombre from usuario u inner join usuario_role ur on u.codigo  = ur.codigo inner "
+				+ "join \"role\" r on ur.role_codigo  = r.codigo  where u.usuario  =:usuario";
 
 		List<String> lstRoles = namedJdbcTemplate.query(sql, parameter, new RowMapper<String>() {
 
@@ -77,7 +77,7 @@ public class UsuarioRepository {
 
 	public List<Usuario> listar() {
 
-		String sql = "select * from usuario join persona p on usuario .per_codigo= p.per_codigo ";
+		String sql = "select * from usuario join persona p on usuario u u.persona_codigo= p.codigo ";
 
 		List<Usuario> lstUsuario = namedJdbcTemplate.query(sql, new RowMapper<Usuario>() {
 
@@ -112,7 +112,7 @@ public class UsuarioRepository {
 		parameter.addValue("estado", 1);
 		parameter.addValue("persona", usuario.getPersona().getCodigo());
 
-		String sql = "insert into usuario(usu_usuario,usu_estado,usu_clave,per_codigo)"
+		String sql = "insert into usuario(usuario,estado,clave,persona_codigo)"
 				+ "values(:nombre,:estado,:clave,:persona)";
 
 		namedJdbcTemplate.update(sql, parameter);

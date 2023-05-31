@@ -65,7 +65,7 @@ public class UsuarioRoleRepository {
 		parameter.addValue("estado", 1);
 		parameter.addValue("role", usuarioRole.getRole().getCodigo());
 
-		String sql = "insert into usuario_role(usu_codigo,usr_estado,rol_codigo)"
+		String sql = "insert into usuario_role(usuario_codigo,usuario_estado,role_codigo)"
 				+ "values(:usuUsuario,:estado,:role)";
 
 		namedJdbcTemplate.update(sql, parameter);

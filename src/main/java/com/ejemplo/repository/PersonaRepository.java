@@ -43,11 +43,11 @@ public class PersonaRepository {
 			public Persona mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 				Persona per = new Persona();
-				per.setApellido(rs.getString("per_apellido"));
-				per.setNombre(rs.getString("per_nombre"));
-				per.setIdentificacion(rs.getString("per_identificacion"));
-				per.setEstado(rs.getInt("per_estado"));
-				per.setCodigo(rs.getInt("per_codigo"));
+				per.setApellido(rs.getString("apellido"));
+				per.setNombre(rs.getString("nombre"));
+				per.setIdentificacion(rs.getString("identificacion"));
+				per.setEstado(rs.getInt("estado"));
+				per.setCodigo(rs.getInt("codigo"));
 
 				return per;
 			}
