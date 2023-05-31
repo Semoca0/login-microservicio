@@ -35,7 +35,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         UsuarioRole ur = new UsuarioRole();
         ur.setEstado(1);
         ur.setUser(usuario);
-        ur.setRole(role.listar().get(1));
+        ur.setRole(role.listar().get(0));
         uRol.insert(ur);
     }
 

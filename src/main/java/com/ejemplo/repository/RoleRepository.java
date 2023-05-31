@@ -29,9 +29,9 @@ public class RoleRepository {
 			public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 				Role role = new Role();				
-				role.setCodigo(rs.getInt("rol_codigo"));
-				role.setNombre(rs.getString("role_nombre"));
-				role.setEstado(rs.getInt("rol_estado"));
+				role.setCodigo(rs.getInt("codigo"));
+				role.setNombre(rs.getString("nombre"));
+				role.setEstado(rs.getInt("estado"));
 
 				return role;
 			}
