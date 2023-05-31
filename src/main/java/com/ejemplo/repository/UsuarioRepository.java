@@ -57,8 +57,10 @@ public class UsuarioRepository {
 		MapSqlParameterSource parameter = new MapSqlParameterSource();
 		parameter.addValue("usuario", usuario);
 
-		String sql = "select r.role_nombre from usuario u inner join usuario_role ur on u.codigo  = ur.codigo inner "
-				+ "join \"role\" r on ur.role_codigo  = r.codigo  where u.usuario  =:usuario";
+		String sql = "SELECT r.nombre FROM usuario u "
+				+ "INNER JOIN usuario_role ur ON u.codigo = ur.codigo "
+				+ "INNER JOIN `role` r ON ur.role_codigo = r.codigo "
+				+ "WHERE u.usuario = ?";
 
 		List<String> lstRoles = namedJdbcTemplate.query(sql, parameter, new RowMapper<String>() {
 
