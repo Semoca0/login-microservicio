@@ -30,9 +30,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public void insert(Usuario usuario) {
        int persona= personaService.insert2(usuario.getPersona());
        usuario.getPersona().setCodigo(persona);
-        repo.insert(usuario);
+       int usuarioCodigo= repo.insert(usuario);
+       usuario.setCodigo(usuarioCodigo);
         UsuarioRole ur = new UsuarioRole();
         ur.setEstado(1);
+        ur.setUser(usuario);
         ur.setRole(role.listar().get(1));
         uRol.insert(ur);
     }

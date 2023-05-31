@@ -45,7 +45,7 @@ public class PersonaRepository {
 		String sql = "insert into persona (nombre,apellido,identificacion,estado) "
 				+ "values(:nombre,:apellido,:identificacion,:estado)";
 
-		namedJdbcTemplate.update(sql, parameter);
+
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
 		namedJdbcTemplate.update(sql, parameter, keyHolder);
