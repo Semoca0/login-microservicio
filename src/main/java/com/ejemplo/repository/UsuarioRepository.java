@@ -59,7 +59,7 @@ public class UsuarioRepository {
 
 		String sql = "SELECT r.nombre FROM usuario u "
 				+ "INNER JOIN usuario_role ur ON u.codigo = ur.usuario_codigo "
-				+ "INNER JOIN `role` r ON ur.role_codigo = r.codigo "
+				+ "INNER JOIN role r ON ur.role_codigo = r.codigo "
 				+ "WHERE u.usuario = :usuario";
 
 		List<String> lstRoles = namedJdbcTemplate.query(sql, parameter, new RowMapper<String>() {
