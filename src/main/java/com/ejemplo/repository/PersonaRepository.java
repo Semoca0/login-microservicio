@@ -23,7 +23,7 @@ public class PersonaRepository {
 		MapSqlParameterSource parameter = new MapSqlParameterSource();
 		parameter.addValue("nombre", persona.getNombre());
 		parameter.addValue("apellido", persona.getApellido());
-		parameter.addValue("estado", persona.getEstado());
+		parameter.addValue("estado", 1);
 		parameter.addValue("identificacion", persona.getIdentificacion());
 
 		String sql = "insert into persona (per_nombre,per_apellido,per_identificacion) "

@@ -109,7 +109,7 @@ public class UsuarioRepository {
 
 		parameter.addValue("clave", encoder.encode(usuario.getClave()));
 		parameter.addValue("nombre", usuario.getUsuario());
-		parameter.addValue("estado", usuario.getEstado());
+		parameter.addValue("estado", 1);
 		parameter.addValue("persona", usuario.getPersona().getCodigo());
 
 		String sql = "insert into usuario(usu_usuario,usu_estado,usu_clave,per_codigo)"

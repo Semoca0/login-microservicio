@@ -62,7 +62,7 @@ public class UsuarioRoleRepository {
 
 		parameter.addValue("usuUsuario", usuarioRole.getUser().getCodigo());
 
-		parameter.addValue("estado", usuarioRole.getEstado());
+		parameter.addValue("estado", 1);
 		parameter.addValue("role", usuarioRole.getRole().getCodigo());
 
 		String sql = "insert into usuario_role(usu_codigo,usr_estado,rol_codigo)"

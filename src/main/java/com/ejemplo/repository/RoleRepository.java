@@ -47,7 +47,7 @@ public class RoleRepository {
 		MapSqlParameterSource parameter = new MapSqlParameterSource();
 		
 		parameter.addValue("nombre", role.getNombre());
-		parameter.addValue("estado", role.getEstado());
+		parameter.addValue("estado", 1);
 
 		String sql = "insert into role(role_nombre,rol_estado)"
 				+ "values(:nombre,:estado)";
