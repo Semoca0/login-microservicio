@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.ejemplo.model.Persona;
@@ -30,6 +32,30 @@ public class PersonaRepository {
 				+ "values(:nombre,:apellido,:identificacion,:estado)";
 
 		namedJdbcTemplate.update(sql, parameter);
+
+	}
+	public int insert2(Persona persona) {
+
+		MapSqlParameterSource parameter = new MapSqlParameterSource();
+		parameter.addValue("nombre", persona.getNombre());
+		parameter.addValue("apellido", persona.getApellido());
+		parameter.addValue("estado", 1);
+		parameter.addValue("identificacion", persona.getIdentificacion());
+
+		String sql = "insert into persona (nombre,apellido,identificacion,estado) "
+				+ "values(:nombre,:apellido,:identificacion,:estado)";
+
+		namedJdbcTemplate.update(sql, parameter);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		namedJdbcTemplate.update(sql, parameter, keyHolder);
+
+		// Obtener el valor generado para la columna 'codigo'
+		if (keyHolder.getKey() != null) {
+			Long codigoGenerado = keyHolder.getKey().longValue();
+			return codigoGenerado.intValue();
+		}
+		return 0;
 
 	}
 

@@ -2,6 +2,7 @@ package com.ejemplo.service.impl;
 
 import com.ejemplo.model.Usuario;
 import com.ejemplo.model.UsuarioRole;
+import com.ejemplo.repository.PersonaRepository;
 import com.ejemplo.repository.UsuarioRepository;
 import com.ejemplo.repository.UsuarioRoleRepository;
 import com.ejemplo.service.IPersonaService;
@@ -23,11 +24,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     private IRoleService role;
     @Autowired
-    private IPersonaService personaService;
+    private PersonaRepository personaService;
 
     @Override
     public void insert(Usuario usuario) {
-        personaService.insert(usuario.getPersona());
+       int persona= personaService.insert2(usuario.getPersona());
+       usuario.getPersona().setCodigo(persona);
         repo.insert(usuario);
         UsuarioRole ur = new UsuarioRole();
         ur.setEstado(1);
